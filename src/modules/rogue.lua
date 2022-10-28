@@ -1,4 +1,5 @@
-local entitymodule = require("entity_module")
+local entitymodule = require("modules.entity")
+local playermodule = require("modules.player")
 
 local rogue = {}
 rogue.playerPosition = {}
@@ -31,7 +32,8 @@ local function addEntitiesToMap(maxNumberOfEntities, entity, shouldSetPositionGl
             if rogue.map[j][column].type == entitymodule.Type.FLOOR then
                 rogue.map[j][column] = entity
                 if shouldSetPositionGlobally then
-                    rogue.playerPosition = entitymodule.PlayerPosition:new(j, column)
+                    rogue.playerPosition = playermodule.new(j, column)
+                    print(rogue.playerPosition.x)
                 end
                 break
             end

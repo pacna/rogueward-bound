@@ -1,4 +1,4 @@
-local imgmodule = require("img_module")
+local imgmodule = require("modules.img")
 
 local entity = {}
 entity.Type = {
@@ -11,8 +11,6 @@ entity.Type = {
     PLAYER = 7,
     SCROLL = 8
 }
-
-entity.PlayerPosition = { x = -1, y = -1 }
 
 function entity.createWall()
     return { type = entity.Type.WALL, health = 0, xp = 0, atk = 0, imgSrc = "" }
@@ -44,18 +42,6 @@ end
 
 function entity.createScroll()
     return { type = entity.Type.SCROLL, health = 0, xp = 5, atk = 0, imgSrc = imgmodule.getScroll() }
-end
-
--- create a singleton of PlayerPosition
-function entity.PlayerPosition:new(x, y)
-    local instance = {}
-    setmetatable(instance, self)
-    self.__index = self
-
-    self.x = x
-    self.y = y
-
-    return instance
 end
 
 return entity

@@ -1,4 +1,5 @@
 local color = {}
+
 color.WHITE = 1
 color.BLACK = 2
 color.BLUE = 3

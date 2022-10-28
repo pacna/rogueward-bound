@@ -1,7 +1,7 @@
-local colormodule = require("color_module")
-local roguemodule = require("rogue_module")
-local entitymodule = require("entity_module")
-local imgmodule = require("img_module")
+local colormodule = require("modules.color")
+local imgmodule = require("modules.img")
+local roguemodule = require("modules.rogue")
+local entitymodule = require("modules.entity")
 
 local draw = {}
 
@@ -103,7 +103,7 @@ function draw.drawSidebar()
 end
 
 --- Draws the map.
--- @param map is a 2D array of entity (see entity_module.lua)
+-- @param map is a 2D array of entity (see entity.lua)
 -- @return void
 function draw.drawMap(map)
     drawBorders(colormodule.LIGHT_BLUE, 1, 1, TILE_SIZE * roguemodule.ROW, TILE_SIZE * roguemodule.COLUMN)
