@@ -1,3 +1,5 @@
+local imgmodule = require("img_module")
+
 local entity = {}
 entity.Type = {
     WALL = 1,
@@ -10,7 +12,7 @@ entity.Type = {
     SCROLL = 8
 }
 
-local basePath = "assets/"
+entity.PlayerPosition = { x = -1, y = -1 }
 
 function entity.createWall()
     return { type = entity.Type.WALL, health = 0, xp = 0, atk = 0, imgSrc = "" }
@@ -21,27 +23,39 @@ function entity.createFloor()
 end
 
 function entity.createMinion()
-    return { type = entity.Type.MINION, health = 10, xp = 1, atk = 1, imgSrc = basePath .. "mini-boss.png" }
+    return { type = entity.Type.MINION, health = 10, xp = 1, atk = 1, imgSrc = imgmodule.getMinion() }
 end
 
 function entity.createBoss()
-    return { type = entity.Type.BOSS, health = 50, xp = 100, atk = 5, imgSrc = basePath .. "boss.png" }
+    return { type = entity.Type.BOSS, health = 50, xp = 100, atk = 5, imgSrc = imgmodule.getBoss() }
 end
 
 function entity.createHealth()
-    return { type = entity.Type.HEALTH, health = 10, xp = 0, atk = 0, imgSrc = basePath .. "heart.png" }
+    return { type = entity.Type.HEALTH, health = 10, xp = 0, atk = 0, imgSrc = imgmodule.getHealth() }
 end
 
-function entity.createWeapon()
-    return { type = entity.Type.WEAPON, health = 0, xp = 10, atk = 0, imgSrc = basePath .. "chest.png" }
+function entity.createChest()
+    return { type = entity.Type.WEAPON, health = 0, xp = 10, atk = 0, imgSrc = imgmodule.getChest() }
 end
 
 function entity.createPlayer()
-    return { type = entity.Type.PLAYER, health = 20, xp = 0, atk = 5, imgSrc = basePath .. "pokeball.png" }
+    return { type = entity.Type.PLAYER, health = 30, xp = 0, atk = 5, imgSrc = imgmodule.getPlayer() }
 end
 
 function entity.createScroll()
-    return { type = entity.Type.SCROLL, health = 0, xp = 5, atk = 0, imgSrc = basePath .. "scroll.png" }
+    return { type = entity.Type.SCROLL, health = 0, xp = 5, atk = 0, imgSrc = imgmodule.getScroll() }
+end
+
+-- create a singleton of PlayerPosition
+function entity.PlayerPosition:new(x, y)
+    local instance = {}
+    setmetatable(instance, self)
+    self.__index = self
+
+    self.x = x
+    self.y = y
+
+    return instance
 end
 
 return entity

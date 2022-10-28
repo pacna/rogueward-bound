@@ -1,6 +1,7 @@
 local colormodule = require("color_module")
 local roguemodule = require("rogue_module")
 local entitymodule = require("entity_module")
+local imgmodule = require("img_module")
 
 local draw = {}
 
@@ -60,30 +61,45 @@ local function drawBorders(colorType, xPos, yPos, width, height)
     love.graphics.rectangle("line", nextXPos(xPos), nextYPos(yPos), width, height)
 end
 
+local function drawPlayerStats()
+    drawText("Player Stats", 28, colormodule.WHITE, 33, 13)
+    drawText("HP: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].health, 20,
+        colormodule.WHITE
+        , 33, 14.5)
+    drawText("XP: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].xp, 20,
+        colormodule.WHITE, 33, 15.5)
+    drawText("Atk: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].atk, 20,
+        colormodule.WHITE, 33, 16.5)
+end
+
+local function drawGameLog()
+    drawText("Game log", 28, colormodule.WHITE, 33, 18)
+    drawText("Blah", 20, colormodule.WHITE, 33, 19.5)
+end
+
 local function drawKeys()
-    drawImage("assets/boss.png", colormodule.WHITE, 33, 2)
-    drawText("Boss", 20, colormodule.WHITE, 34.5, 2.25)
+    local imgXPosition = roguemodule.ROW + 3
+    local textXPosition = roguemodule.ROW + 4.5
 
-    drawImage("assets/chest.png", colormodule.WHITE, 33, 3.5)
-    drawText("Chest", 20, colormodule.WHITE, 34.5, 3.75)
+    local imgYInitPosition = 3
+    local textYInitPosition = 3.25
 
-    drawImage("assets/heart.png", colormodule.WHITE, 33, 5)
-    drawText("Heart", 20, colormodule.WHITE, 34.5, 5.25)
+    drawText("Key", 28, colormodule.WHITE, imgXPosition, 1.5)
 
-    drawImage("assets/mini-boss.png", colormodule.WHITE, 33, 6.5)
-    drawText("Minion", 20, colormodule.WHITE, 34.5, 6.75)
+    for key, value in pairs(imgmodule.imgSwitch) do
+        drawImage(value, colormodule.WHITE, imgXPosition, imgYInitPosition)
+        drawText(key, 20, colormodule.WHITE, textXPosition, textYInitPosition)
 
-    drawImage("assets/pokeball.png", colormodule.WHITE, 33, 8)
-    drawText("Player (You)", 20, colormodule.WHITE, 34.5, 8.25)
-
-    drawImage("assets/scroll.png", colormodule.WHITE, 33, 9.5)
-    drawText("Scroll", 20, colormodule.WHITE, 34.5, 9.75)
+        imgYInitPosition = imgYInitPosition + 1.5
+        textYInitPosition = textYInitPosition + 1.5
+    end
 end
 
 function draw.drawSidebar()
     drawBorders(colormodule.RED, 32, 1, 360 + TILE_SIZE, TILE_SIZE * roguemodule.COLUMN)
     drawKeys()
-
+    drawPlayerStats()
+    drawGameLog()
 end
 
 --- Draws the map.
