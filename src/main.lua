@@ -1,4 +1,4 @@
-local gamewrappermodule = require("modules.gamewrapper")
+local gamewrappermodule = require("components.gamewrapper")
 
 function love.load()
     gamewrappermodule.init()

@@ -1,7 +1,7 @@
 local colormodule = require("modules.color")
 local keyboardmodule = require("modules.keyboard")
-local roguemodule = require("modules.rogue")
-local drawmodule = require("modules.draw")
+local roguemodule = require("components.rogue")
+local drawmodule = require("components.draw")
 
 local gamewrapper = {}
 gamewrapper.width = 2000

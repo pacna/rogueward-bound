@@ -1,7 +1,7 @@
 local colormodule = require("modules.color")
 local imgmodule = require("modules.img")
-local roguemodule = require("modules.rogue")
-local entitymodule = require("modules.entity")
+local roguemodule = require("components.rogue")
+local entitymodule = require("components.entity")
 
 local draw = {}
 
@@ -74,7 +74,7 @@ end
 
 local function drawGameLog()
     drawText("Game log", 28, colormodule.WHITE, 33, 18)
-    drawText("Blah", 20, colormodule.WHITE, 33, 19.5)
+    drawText("Have fun!", 20, colormodule.WHITE, 33, 19.5)
 end
 
 local function drawKeys()

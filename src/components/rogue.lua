@@ -1,5 +1,5 @@
-local entitymodule = require("modules.entity")
-local playermodule = require("modules.player")
+local entitymodule = require("components.entity")
+local Player = require("entities.player")
 local keyboardmodule = require("modules.keyboard")
 
 local rogue = {}
@@ -26,7 +26,7 @@ local function loadMap()
 end
 
 local function addEntitiesToMap(maxNumberOfEntities, entity)
-    for i = maxNumberOfEntities, 1, -1 do
+    for _ = maxNumberOfEntities, 1, -1 do
         local row = math.random(1, rogue.ROW)
         for j = row, rogue.ROW do
             local column = math.random(1, rogue.COLUMN)
@@ -55,7 +55,7 @@ local function loadPlayer()
     -- TODO: handle edge case where player position might remove an existing entity on the map (specifically the boss)
     rogue.map[xPos][yPos] = entitymodule.createFloor()
     local player = entitymodule.createPlayer()
-    rogue.currentPlayer = playermodule.Player:new(xPos, yPos, player.health, player.xp, player.atk, player.imgSrc)
+    rogue.currentPlayer = Player:new(xPos, yPos, player.health, player.xp, player.atk, player.imgSrc)
 end
 
 local function isValidXPos(xPos)
