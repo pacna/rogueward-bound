@@ -63,12 +63,12 @@ end
 
 local function drawPlayerStats()
     drawText("Player Stats", 28, colormodule.WHITE, 33, 13)
-    drawText("HP: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].health, 20,
+    drawText("HP: " .. roguemodule.currentPlayer.health, 20,
         colormodule.WHITE
         , 33, 14.5)
-    drawText("XP: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].xp, 20,
+    drawText("XP: " .. roguemodule.currentPlayer.xp, 20,
         colormodule.WHITE, 33, 15.5)
-    drawText("Atk: " .. roguemodule.map[roguemodule.playerPosition.x][roguemodule.playerPosition.y].atk, 20,
+    drawText("Atk: " .. roguemodule.currentPlayer.atk, 20,
         colormodule.WHITE, 33, 16.5)
 end
 
@@ -93,6 +93,11 @@ local function drawKeys()
         imgYInitPosition = imgYInitPosition + 1.5
         textYInitPosition = textYInitPosition + 1.5
     end
+end
+
+function draw.drawPlayer()
+    drawImage(roguemodule.currentPlayer.imgSrc, colormodule.WHITE, roguemodule.currentPlayer.xPos,
+        roguemodule.currentPlayer.yPos)
 end
 
 function draw.drawSidebar()

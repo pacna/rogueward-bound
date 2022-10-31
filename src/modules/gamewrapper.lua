@@ -22,18 +22,14 @@ end
 function gamewrapper.draw()
     drawmodule.drawMap(roguemodule.map)
     drawmodule.drawSidebar()
+    drawmodule.drawPlayer()
 end
 
 function gamewrapper.move(key)
-    if keyboardmodule.isUpPressed(key) then
-        print("up")
-    elseif keyboardmodule.isDownPressed(key) then
-        print("down")
-    elseif keyboardmodule.isLeftPressed(key) then
-        print("left")
-    elseif keyboardmodule.isRightPressed(key) then
-        print("right")
+    if keyboardmodule.isQuit(key) then
+        love.event.quit()
     else
+        roguemodule.moveAndRenderPlayer(key, drawmodule.drawPlayer)
     end
 end
 

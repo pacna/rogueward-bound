@@ -23,4 +23,8 @@ function keyboard.isRightPressed(key)
     return keySwitch["right"][1] == key or keySwitch["right"][2] == key
 end
 
+function keyboard.isQuit(key)
+    return key == "q";
+end
+
 return keyboard
