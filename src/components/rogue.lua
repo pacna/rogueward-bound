@@ -117,7 +117,7 @@ function rogue.moveAndRenderPlayer(key, renderPlayerFn)
     end
 
     if shouldUpdatePlayerPosition then
-        renderPlayerFn()
+        renderPlayerFn('player')
     end
 
 end

@@ -1,7 +1,7 @@
 local colormodule = require("modules.color")
 local keyboardmodule = require("modules.keyboard")
 local roguemodule = require("components.rogue")
-local drawmodule = require("components.draw")
+local rendererfactory = require('factories.renderer')
 
 local gamewrapper = {}
 gamewrapper.width = 2000
@@ -20,16 +20,14 @@ function gamewrapper.init()
 end
 
 function gamewrapper.draw()
-    drawmodule.drawMap(roguemodule.map)
-    drawmodule.drawSidebar()
-    drawmodule.drawPlayer()
+    rendererfactory.renders()
 end
 
 function gamewrapper.move(key)
     if keyboardmodule.isQuit(key) then
         love.event.quit()
     else
-        roguemodule.moveAndRenderPlayer(key, drawmodule.drawPlayer)
+        roguemodule.moveAndRenderPlayer(key, rendererfactory.renderChild)
     end
 end
 

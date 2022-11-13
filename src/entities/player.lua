@@ -24,4 +24,20 @@ function Player:setYPos(yPos)
     self.yPos = yPos or self.yPos
 end
 
+function Player:addHealth(health)
+    self.health = self.health + health
+end
+
+function Player:subtractHealth(health)
+    self.health = self.health - health
+end
+
+function Player:addXp(xp)
+    self.xp = self.xp + xp
+end
+
+function Player:increaseAtkPower(atk)
+    self.atk = self.atk + atk
+end
+
 return Player
