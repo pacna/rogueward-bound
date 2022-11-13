@@ -1,6 +1,11 @@
-local entitymodule = require("components.entity")
-local Player = require("entities.player")
+-- modules
 local keyboardmodule = require("modules.keyboard")
+
+-- core
+local entitycore = require("core.entity")
+
+-- entities
+local Player = require("entities.player")
 
 local rogue = {}
 rogue.currentPlayer = {}
@@ -16,10 +21,10 @@ local function loadMap()
         rogue.map[i] = {}
         for j = 1, rogue.COLUMN do
             local seed = math.random(1, 5)
-            if seed == entitymodule.Type.WALL then
-                rogue.map[i][j] = entitymodule.createWall()
+            if seed == entitycore.Type.WALL then
+                rogue.map[i][j] = entitycore.createWall()
             else
-                rogue.map[i][j] = entitymodule.createFloor()
+                rogue.map[i][j] = entitycore.createFloor()
             end
         end
     end
@@ -30,7 +35,7 @@ local function addEntitiesToMap(maxNumberOfEntities, entity)
         local row = math.random(1, rogue.ROW)
         for j = row, rogue.ROW do
             local column = math.random(1, rogue.COLUMN)
-            if rogue.map[j][column].type == entitymodule.Type.FLOOR then
+            if rogue.map[j][column].type == entitycore.Type.FLOOR then
                 rogue.map[j][column] = entity
                 break;
             end
@@ -40,21 +45,21 @@ local function addEntitiesToMap(maxNumberOfEntities, entity)
 end
 
 local function loadEntities()
-    addEntitiesToMap(5, entitymodule.createMinion())
-    addEntitiesToMap(5, entitymodule.createHealth())
-    addEntitiesToMap(5, entitymodule.createChest())
+    addEntitiesToMap(5, entitycore.createMinion())
+    addEntitiesToMap(5, entitycore.createHealth())
+    addEntitiesToMap(5, entitycore.createChest())
     -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
-    addEntitiesToMap(1, entitymodule.createBoss())
+    addEntitiesToMap(1, entitycore.createBoss())
     -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
-    addEntitiesToMap(1, entitymodule.createScroll())
+    addEntitiesToMap(1, entitycore.createScroll())
 end
 
 local function loadPlayer()
     local xPos = math.random(1, rogue.ROW)
     local yPos = math.random(1, rogue.COLUMN)
     -- TODO: handle edge case where player position might remove an existing entity on the map (specifically the boss)
-    rogue.map[xPos][yPos] = entitymodule.createFloor()
-    local player = entitymodule.createPlayer()
+    rogue.map[xPos][yPos] = entitycore.createFloor()
+    local player = entitycore.createPlayer()
     rogue.currentPlayer = Player:new(xPos, yPos, player.health, player.xp, player.atk, player.imgSrc)
 end
 
@@ -70,7 +75,7 @@ local function isFloor(newXPos, newYPos)
     local xPos = newXPos or rogue.currentPlayer.xPos
     local yPos = newYPos or rogue.currentPlayer.yPos
 
-    return rogue.map[xPos][yPos].type == entitymodule.Type.FLOOR
+    return rogue.map[xPos][yPos].type == entitycore.Type.FLOOR
 end
 
 local function isWithinMap(newXPos, newYPos)
@@ -117,7 +122,7 @@ function rogue.moveAndRenderPlayer(key, renderPlayerFn)
     end
 
     if shouldUpdatePlayerPosition then
-        renderPlayerFn('player')
+        renderPlayerFn()
     end
 
 end

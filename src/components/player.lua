@@ -1,15 +1,18 @@
-local roguemodule = require("components.rogue")
+-- modules
 local drawmodule = require('modules.draw')
 local colormodule = require('modules.color')
+
+-- core
+local roguecore = require("core.rogue")
 
 local player = {}
 player.ID = "player"
 
-local playerBackgroundColorRGBA = colormodule.getColorRGBA(colormodule.WHITE)
+local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.WHITE)
 
 function player.render()
-    drawmodule.drawImage(playerBackgroundColorRGBA, roguemodule.currentPlayer.imgSrc, roguemodule.currentPlayer.xPos,
-        roguemodule.currentPlayer.yPos)
+    drawmodule.drawImage(backgroundColorRGBA, roguecore.currentPlayer.imgSrc, roguecore.currentPlayer.xPos,
+        roguecore.currentPlayer.yPos)
 end
 
 return player

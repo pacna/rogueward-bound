@@ -19,15 +19,20 @@ local colorSwitch = {
     [color.RED] = { 200, 0, 0, 255 }
 }
 
-function color.getLoveRGBA(r, g, b, a)
-    a = a or 0
+function color.getLoveRGBA(args)
+    args.a = args.a or 0
 
-    return { red = r / COLOR_MAX, green = g / COLOR_MAX, blue = b / COLOR_MAX, alpha = a / COLOR_MAX }
+    return { red = args.r / COLOR_MAX, green = args.g / COLOR_MAX, blue = args.b / COLOR_MAX, alpha = args.a / COLOR_MAX }
 end
 
 function color.getColorRGBA(colorType)
     local colorRGBA = colorSwitch[colorType]
-    return color.getLoveRGBA(colorRGBA[1], colorRGBA[2], colorRGBA[3], colorRGBA[4])
+    return color.getLoveRGBA {
+        r = colorRGBA[1],
+        g = colorRGBA[2],
+        b = colorRGBA[3],
+        a = colorRGBA[4]
+    }
 end
 
 return color

@@ -1,6 +1,14 @@
+-- modules
 local colormodule = require("modules.color")
 local keyboardmodule = require("modules.keyboard")
-local roguemodule = require("components.rogue")
+
+-- core
+local roguecore = require("core.rogue")
+
+-- components
+local playercomponent = require('components.player')
+
+-- factories
 local rendererfactory = require('factories.renderer')
 
 local gamewrapper = {}
@@ -10,13 +18,14 @@ gamewrapper.title = "Love Rogue"
 gamewrapper.backgroundColor = colormodule.getColorRGBA(colormodule.GRAY)
 
 
+
 function gamewrapper.init()
     math.randomseed(os.time())
     love.window.setMode(gamewrapper.width, gamewrapper.height)
     love.window.setTitle(gamewrapper.title)
     love.graphics.setBackgroundColor(gamewrapper.backgroundColor.red, gamewrapper.backgroundColor.green,
         gamewrapper.backgroundColor.blue)
-    roguemodule.loadWorld()
+    roguecore.loadWorld()
 end
 
 function gamewrapper.draw()
@@ -27,7 +36,7 @@ function gamewrapper.move(key)
     if keyboardmodule.isQuit(key) then
         love.event.quit()
     else
-        roguemodule.moveAndRenderPlayer(key, rendererfactory.renderChild)
+        roguecore.moveAndRenderPlayer(key, playercomponent.render)
     end
 end
 
