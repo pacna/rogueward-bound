@@ -20,21 +20,20 @@ function draw.getTileSize()
     return TILE_SIZE
 end
 
-function draw.drawText(colorRGBA, text, fontSize, xPos, yPos)
-    local font = love.graphics.newFont(fontSize)
+function draw.drawText(configs)
+    local font = love.graphics.newFont(configs.fontSize)
     love.graphics.setFont(font)
-    love.graphics.setColor(colorRGBA.red, colorRGBA.green, colorRGBA.blue)
-    love.graphics.print(text, nextXPos(xPos), nextYPos(yPos))
+    love.graphics.setColor(configs.colorRGBA.red, configs.colorRGBA.green, configs.colorRGBA.blue)
+    love.graphics.print(configs.text, nextXPos(configs.xPos), nextYPos(configs.yPos))
 end
 
-function draw.drawImage(colorRGBA, imgPath, xPos, yPos)
-    if imgPath == "" then
+function draw.drawImage(configs)
+    if configs.imgPath == "" then
         return
-    else
-        love.graphics.setColor(colorRGBA.red, colorRGBA.green, colorRGBA.blue)
-        local img = love.graphics.newImage(imgPath)
-        love.graphics.draw(img, nextXPos(xPos), nextYPos(yPos))
     end
+    love.graphics.setColor(configs.colorRGBA.red, configs.colorRGBA.green, configs.colorRGBA.blue)
+    local img = love.graphics.newImage(configs.imgPath)
+    love.graphics.draw(img, nextXPos(configs.xPos), nextYPos(configs.yPos))
 end
 
 function draw.drawTile(colorRGBA, xPos, yPos)
@@ -42,9 +41,9 @@ function draw.drawTile(colorRGBA, xPos, yPos)
     love.graphics.rectangle("fill", nextXPos(xPos), nextYPos(yPos), TILE_SIZE, TILE_SIZE)
 end
 
-function draw.drawBorders(colorRGBA, xPos, yPos, width, height)
-    love.graphics.setColor(colorRGBA.red, colorRGBA.green, colorRGBA.blue)
-    love.graphics.rectangle("line", nextXPos(xPos), nextYPos(yPos), width, height)
+function draw.drawBorders(configs)
+    love.graphics.setColor(configs.colorRGBA.red, configs.colorRGBA.green, configs.colorRGBA.blue)
+    love.graphics.rectangle("line", nextXPos(configs.xPos), nextYPos(configs.yPos), configs.width, configs.height)
 end
 
 return draw

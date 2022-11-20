@@ -25,13 +25,23 @@ local function determineEntityColor(entity)
 end
 
 function grid.render()
-    drawmodule.drawBorders(borderRGBA, 1, 1, drawmodule.getTileSize() * roguecore.ROW,
-        drawmodule.getTileSize() * roguecore.COLUMN)
+    drawmodule.drawBorders {
+        colorRGBA = borderRGBA,
+        xPos = 1,
+        yPos = 1,
+        width = drawmodule.getTileSize() * roguecore.ROW,
+        height = drawmodule.getTileSize() * roguecore.COLUMN
+    }
 
     for x = 1, #roguecore.map do
         for y = 1, #roguecore.map[x] do
             drawmodule.drawTile(colormodule.getColorRGBA(determineEntityColor(roguecore.map[x][y])), x, y)
-            drawmodule.drawImage(entityRGBA, roguecore.map[x][y].imgSrc, x, y)
+            drawmodule.drawImage {
+                colorRGBA = entityRGBA,
+                imgPath = roguecore.map[x][y].imgSrc,
+                xPos = x,
+                yPos = y
+            }
         end
     end
 

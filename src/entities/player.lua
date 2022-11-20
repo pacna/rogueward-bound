@@ -16,12 +16,9 @@ function Player:debugPrint()
     print("x: " .. self.xPos, "y: " .. self.yPos, "health: " .. self.health, "XP: " .. self.xp, "ATK: " .. self.atk)
 end
 
-function Player:setXPos(xPos)
-    self.xPos = xPos or self.xPos
-end
-
-function Player:setYPos(yPos)
-    self.yPos = yPos or self.yPos
+function Player:setPos(pos)
+    self.xPos = pos.x
+    self.yPos = pos.y
 end
 
 function Player:addHealth(health)

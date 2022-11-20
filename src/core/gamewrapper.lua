@@ -1,15 +1,15 @@
 -- modules
 local colormodule = require("modules.color")
-local keyboardmodule = require("modules.keyboard")
 
 -- core
 local roguecore = require("core.rogue")
 
--- components
-local playercomponent = require('components.player')
-
 -- factories
 local rendererfactory = require('factories.renderer')
+local handlerfactory = require('factories.messagebus.handler')
+
+-- handlers
+local keyboardhandler = require('handlers.keyboard')
 
 local gamewrapper = {}
 gamewrapper.width = 2000
@@ -28,16 +28,16 @@ function gamewrapper.init()
     roguecore.loadWorld()
 end
 
+function gamewrapper.update()
+    handlerfactory.run()
+end
+
 function gamewrapper.draw()
     rendererfactory.renders()
 end
 
 function gamewrapper.move(key)
-    if keyboardmodule.isQuit(key) then
-        love.event.quit()
-    else
-        roguecore.moveAndRenderPlayer(key, playercomponent.render)
-    end
+    keyboardhandler.handleMessage { key = keyboardhandler.Key, value = { keycode = key } }
 end
 
 return gamewrapper

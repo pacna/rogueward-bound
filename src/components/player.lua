@@ -11,8 +11,12 @@ player.ID = "player"
 local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.WHITE)
 
 function player.render()
-    drawmodule.drawImage(backgroundColorRGBA, roguecore.currentPlayer.imgSrc, roguecore.currentPlayer.xPos,
-        roguecore.currentPlayer.yPos)
+    drawmodule.drawImage {
+        colorRGBA = backgroundColorRGBA,
+        imgPath = roguecore.currentPlayer.imgSrc,
+        xPos = roguecore.currentPlayer.xPos,
+        yPos = roguecore.currentPlayer.yPos
+    }
 end
 
 return player

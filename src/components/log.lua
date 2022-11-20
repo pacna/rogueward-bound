@@ -8,8 +8,20 @@ log.ID = "log"
 local logRGBA = colormodule.getColorRGBA(colormodule.WHITE)
 
 function log.render()
-    drawmodule.drawText(logRGBA, "Game log", 28, 33, 18)
-    drawmodule.drawText(logRGBA, "Have fun!", 20, 33, 19.5)
+    drawmodule.drawText {
+        colorRGBA = logRGBA,
+        text = "Game log",
+        fontSize = 28,
+        xPos = 33,
+        yPos = 18
+    }
+    drawmodule.drawText {
+        colorRGBA = logRGBA,
+        text = "Have fun!",
+        fontSize = 20,
+        xPos = 33,
+        yPos = 19.5
+    }
 end
 
 return log

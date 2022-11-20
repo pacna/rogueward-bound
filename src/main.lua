@@ -6,6 +6,7 @@ function love.load()
 end
 
 function love.update(dt)
+    gamewrappercore.update()
 end
 
 function love.keypressed(key)

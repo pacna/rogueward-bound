@@ -4,10 +4,10 @@ Command.Type = {
     ["Rerender"] = 2
 }
 
-function Command:new(type, value)
+function Command:new(key, value)
     self.__index = self
     return setmetatable({
-        type = type,
+        key = key,
         value = value
     }, self)
 end

@@ -25,11 +25,28 @@ local function drawKeys()
     local imgYInitPosition = 3
     local textYInitPosition = 3.25
 
-    drawmodule.drawText(keyRGBA, "Key", 28, imgXPosition, 1.5)
+    drawmodule.drawText {
+        colorRGBA = keyRGBA,
+        text = "Key",
+        fontSize = 28,
+        xPos = imgXPosition,
+        yPos = 1.5
+    }
 
     for header, src in pairs(imgmodule.imgSwitch) do
-        drawmodule.drawImage(keyRGBA, src, imgXPosition, imgYInitPosition)
-        drawmodule.drawText(keyRGBA, header, 20, textXPosition, textYInitPosition)
+        drawmodule.drawImage {
+            colorRGBA = keyRGBA,
+            imgPath = src,
+            xPos = imgXPosition,
+            yPos = imgYInitPosition
+        }
+        drawmodule.drawText {
+            colorRGBA = keyRGBA,
+            text = header,
+            fontSize = 20,
+            xPos = textXPosition,
+            yPos = textYInitPosition
+        }
 
         imgYInitPosition = imgYInitPosition + 1.5
         textYInitPosition = textYInitPosition + 1.5
@@ -37,8 +54,13 @@ local function drawKeys()
 end
 
 function sidebar.render()
-    drawmodule.drawBorders(borderRGBA, 32, 1, 360 + drawmodule.getTileSize(),
-        drawmodule.getTileSize() * roguecore.COLUMN)
+    drawmodule.drawBorders {
+        colorRGBA = borderRGBA,
+        xPos = 32,
+        yPos = 1,
+        width = 360 + drawmodule.getTileSize(),
+        height = drawmodule.getTileSize() * roguecore.COLUMN
+    }
 
     drawKeys()
     statscomponent.render()
