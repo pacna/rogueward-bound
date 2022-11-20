@@ -1,9 +1,6 @@
 -- modules
 local keyboardmodule = require("modules.keyboard")
 
--- entities
-local Command = require('entities.command')
-
 -- factories
 local publisher = require('factories.messagebus.publisher')
 
@@ -11,8 +8,7 @@ local keyboard = {}
 keyboard.Key = "keyboard"
 
 local function sendMessage(dx, dy)
-    local command = Command:new("movement", { dx = dx, dy = dy })
-    publisher.sendMessage(command)
+    publisher.send("movement", { dx = dx, dy = dy })
 end
 
 function keyboard.handleMessage(msg)

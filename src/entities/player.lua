@@ -1,14 +1,14 @@
 local Player = {}
 
-function Player:new(xPos, yPos, health, xp, atk, imgSrc)
+function Player:new(configs)
     self.__index = self
     return setmetatable({
-        xPos = xPos,
-        yPos = yPos,
-        health = health,
-        xp = xp,
-        atk = atk,
-        imgSrc = imgSrc
+        xPos = configs.xPos,
+        yPos = configs.yPos,
+        health = configs.health,
+        xp = configs.xp,
+        atk = configs.atk,
+        imgSrc = configs.imgSrc
     }, self)
 end
 
@@ -29,7 +29,7 @@ function Player:subtractHealth(health)
     self.health = self.health - health
 end
 
-function Player:addXp(xp)
+function Player:addXP(xp)
     self.xp = self.xp + xp
 end
 

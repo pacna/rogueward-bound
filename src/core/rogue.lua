@@ -57,7 +57,14 @@ local function loadPlayer()
     -- TODO: handle edge case where player position might remove an existing entity on the map (specifically the boss)
     rogue.map[xPos][yPos] = entitycore.createFloor()
     local player = entitycore.createPlayer()
-    rogue.currentPlayer = Player:new(xPos, yPos, player.health, player.xp, player.atk, player.imgSrc)
+    rogue.currentPlayer = Player:new {
+        xPos = xPos,
+        yPos = yPos,
+        health = player.health,
+        xp = player.xp,
+        atk = player.atk,
+        imgSrc = player.imgSrc
+    }
 end
 
 function rogue.loadWorld()

@@ -7,16 +7,13 @@ local roguecore = require("core.rogue")
 -- factories
 local rendererfactory = require('factories.renderer')
 local handlerfactory = require('factories.messagebus.handler')
-
--- handlers
-local keyboardhandler = require('handlers.keyboard')
+local publisher = require('factories.messagebus.publisher')
 
 local gamewrapper = {}
 gamewrapper.width = 2000
 gamewrapper.height = 1300
 gamewrapper.title = "Love Rogue"
 gamewrapper.backgroundColor = colormodule.getColorRGBA(colormodule.GRAY)
-
 
 
 function gamewrapper.init()
@@ -37,7 +34,7 @@ function gamewrapper.draw()
 end
 
 function gamewrapper.move(key)
-    keyboardhandler.handleMessage { key = keyboardhandler.Key, value = { keycode = key } }
+    publisher.send("keyboard", { keycode = key })
 end
 
 return gamewrapper
