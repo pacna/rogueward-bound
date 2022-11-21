@@ -18,7 +18,7 @@ local function loadMap()
         rogue.map[i] = {}
         for j = 1, rogue.COLUMN do
             local seed = math.random(1, 5)
-            if seed == entitycore.Type.WALL then
+            if seed == entitycore.Types.WALL then
                 rogue.map[i][j] = entitycore.createWall()
             else
                 rogue.map[i][j] = entitycore.createFloor()
@@ -32,7 +32,7 @@ local function addEntitiesToMap(maxNumberOfEntities, entity)
         local row = math.random(1, rogue.ROW)
         for j = row, rogue.ROW do
             local column = math.random(1, rogue.COLUMN)
-            if rogue.map[j][column].type == entitycore.Type.FLOOR then
+            if rogue.map[j][column].type == entitycore.Types.FLOOR then
                 rogue.map[j][column] = entity
                 break;
             end

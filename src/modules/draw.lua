@@ -31,6 +31,7 @@ function draw.drawImage(configs)
     if configs.imgPath == "" then
         return
     end
+
     love.graphics.setColor(configs.colorRGBA.red, configs.colorRGBA.green, configs.colorRGBA.blue)
     local img = love.graphics.newImage(configs.imgPath)
     love.graphics.draw(img, nextXPos(configs.xPos), nextYPos(configs.yPos))

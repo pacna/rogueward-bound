@@ -8,7 +8,7 @@ local keyboard = {}
 keyboard.Key = "keyboard"
 
 local function sendMessage(dx, dy)
-    publisher.send("movement", { dx = dx, dy = dy })
+    publisher.send(publisher.Types.POSITION, { dx = dx, dy = dy })
 end
 
 function keyboard.handleMessage(msg)

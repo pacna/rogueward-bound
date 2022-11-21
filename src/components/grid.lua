@@ -16,12 +16,11 @@ local borderRGBA = colormodule.getColorRGBA(colormodule.LIGHT_BLUE)
 local entityRGBA = colormodule.getColorRGBA(colormodule.WHITE)
 
 local function determineEntityColor(entity)
-    if entity.type == entitycore.Type.WALL
-    then
+    if entity.type == entitycore.Types.WALL then
         return colormodule.BLACK
-    else
-        return colormodule.BLUE
     end
+
+    return colormodule.BLUE
 end
 
 function grid.render()

@@ -1,6 +1,6 @@
-local Command = {}
+local Message = {}
 
-function Command:new(key, value)
+function Message:new(key, value)
     self.__index = self
     return setmetatable({
         key = key,
@@ -8,4 +8,4 @@ function Command:new(key, value)
     }, self)
 end
 
-return Command
+return Message

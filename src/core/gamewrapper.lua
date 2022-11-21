@@ -34,7 +34,7 @@ function gamewrapper.draw()
 end
 
 function gamewrapper.move(key)
-    publisher.send("keyboard", { keycode = key })
+    publisher.send(publisher.Types.KEYBOARD, { keycode = key })
 end
 
 return gamewrapper
