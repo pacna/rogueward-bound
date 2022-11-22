@@ -48,6 +48,9 @@ function position.handleMessage(msg)
         publisher.send(publisher.Types.LOG,
             { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk })
         roguecore.map[playerXPos][playerYPos] = entitycore.createFloor()
+
+        publisher.send(publisher.Types.STATS,
+            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk })
     end
 
     if isFloor(playerXPos, playerYPos) then

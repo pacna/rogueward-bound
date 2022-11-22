@@ -33,7 +33,7 @@ function Player:addXP(xp)
     self.xp = self.xp + xp
 end
 
-function Player:increaseAtkPower(atk)
+function Player:addAtkPower(atk)
     self.atk = self.atk + atk
 end
 

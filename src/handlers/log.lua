@@ -12,17 +12,19 @@ function log.handleMessage(msg)
         return
     end
 
-    if msg.value.type == entitycore.Types.SCROLL then
+    local entityType = msg.value.type
+
+    if entityType == entitycore.Types.SCROLL then
         logcomponent.updateLog("You found the secret scroll!")
         return
     end
 
-    if msg.value.type == entitycore.Types.HEALTH then
+    if entityType == entitycore.Types.HEALTH then
         logcomponent.updateLog(string.format("You gain +%d health", msg.value.health))
         return
     end
 
-    if msg.value.type == entitycore.Types.WEAPON then
+    if entityType == entitycore.Types.WEAPON then
         logcomponent.updateLog(string.format("You gain +%d atk", msg.value.atk))
         return
     end

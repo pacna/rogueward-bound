@@ -8,7 +8,8 @@ local publisher = {}
 publisher.Types = {
     KEYBOARD = "keyboard",
     POSITION = "position",
-    LOG = "log"
+    LOG = "log",
+    STATS = "stats"
 }
 
 function publisher.send(key, value)

@@ -1,6 +1,7 @@
 local bus = {}
 
 local queue = {}
+local isOff = false
 
 function bus.add(msg)
     table.insert(queue, msg)
@@ -20,6 +21,10 @@ function bus.peek()
     end
 
     return queue[1]
+end
+
+function bus.isOff()
+    return isOff
 end
 
 return bus
