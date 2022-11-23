@@ -2,6 +2,7 @@
 local logcomponent = require('components.log')
 
 -- core
+local roguecore = require('core.rogue')
 local entitycore = require('core.entity')
 
 local log = {}
@@ -12,20 +13,31 @@ function log.handleMessage(msg)
         return
     end
 
-    local entityType = msg.value.type
+    local currentPlayer = roguecore.currentPlayer
+    if not next(msg.value) then
+        if currentPlayer.health > 0 then
+            logcomponent.updateLog("You won!")
+        else
+            logcomponent.updateLog("Game over")
+        end
 
-    if entityType == entitycore.Types.SCROLL then
+        return
+    end
+
+    local logContent = msg.value
+
+    if logContent.type == entitycore.Types.SCROLL then
         logcomponent.updateLog("You found the secret scroll!")
         return
     end
 
-    if entityType == entitycore.Types.HEALTH then
-        logcomponent.updateLog(string.format("You gain +%d health", msg.value.health))
+    if logContent.type == entitycore.Types.HEALTH then
+        logcomponent.updateLog(string.format("You gain +%d health", logContent.health))
         return
     end
 
-    if entityType == entitycore.Types.WEAPON then
-        logcomponent.updateLog(string.format("You gain +%d atk", msg.value.atk))
+    if logContent.type == entitycore.Types.WEAPON then
+        logcomponent.updateLog(string.format("You gain +%d atk", logContent.atk))
         return
     end
 end

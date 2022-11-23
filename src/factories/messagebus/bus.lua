@@ -23,6 +23,10 @@ function bus.peek()
     return queue[1]
 end
 
+function bus.stop()
+    isOff = true
+end
+
 function bus.isOff()
     return isOff
 end

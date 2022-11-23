@@ -2,6 +2,9 @@
 local roguecore = require('core.rogue')
 local entitycore = require('core.entity')
 
+-- factories
+local publisher = require('factories.messagebus.publisher')
+
 local item = {}
 item.Key = "item"
 
@@ -10,19 +13,21 @@ function item.handleMessage(msg)
         return
     end
 
-    local entityHealth = msg.value.health
-    local entityAtk = msg.value.atk
+    local itemContent = msg.value
 
-    if entityAtk ~= 0 then
-        roguecore.currentPlayer:addAtkPower(entityAtk)
+    if itemContent.atk ~= 0 then
+        roguecore.currentPlayer:addAtkPower(itemContent.atk)
     end
 
-    if entityHealth ~= 0 then
-        roguecore.currentPlayer:addHealth(entityHealth)
+    if itemContent.health ~= 0 then
+        roguecore.currentPlayer:addHealth(itemContent.health)
     end
 
-    roguecore.map[msg.value.xPos][msg.value.yPos] = entitycore.createFloor()
-    roguecore.currentPlayer:setPos { x = msg.value.xPos, y = msg.value.yPos }
+    roguecore.map[itemContent.xPos][itemContent.yPos] = entitycore.createFloor()
+    roguecore.currentPlayer:setPos { x = itemContent.xPos, y = itemContent.yPos }
+
+    publisher.send(publisher.Types.LOG,
+        { type = itemContent.type, health = itemContent.health, atk = itemContent.atk, xp = 0 })
 end
 
 return item

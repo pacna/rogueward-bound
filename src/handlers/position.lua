@@ -50,12 +50,9 @@ function position.handleMessage(msg)
 
     if isItem(playerXPos, playerYPos) then
         local selectedEntity = roguecore.map[playerXPos][playerYPos]
-        publisher.send(publisher.Types.LOG,
-            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk,
-                xp = selectedEntity.xp })
-
         publisher.send(publisher.Types.ITEM,
-            { health = selectedEntity.health, atk = selectedEntity.atk, xPos = playerXPos, yPos = playerYPos })
+            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk, xPos = playerXPos,
+                yPos = playerYPos })
         return
     end
 

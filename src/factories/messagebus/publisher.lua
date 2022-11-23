@@ -12,12 +12,17 @@ publisher.Types = {
     POSITION = "position",
     LOG = "log",
     ITEM = "item",
-    BRAWL = "brawl"
+    BRAWL = "brawl",
+    DONE = "done"
 }
 
 function publisher.send(key, value)
     local msg = Message:new(key, value)
     messagebus.add(msg)
+end
+
+function publisher.off()
+    messagebus.stop()
 end
 
 return publisher
