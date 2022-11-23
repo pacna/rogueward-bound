@@ -2,7 +2,8 @@
 local positionhandler = require('handlers.position')
 local keyboardhandler = require('handlers.keyboard')
 local loghandler = require('handlers.log')
-local statshandler = require('handlers.stats')
+local itemhandler = require('handlers.item')
+local brawlhandler = require('handlers.brawl')
 
 -- self
 local messagebus = require('factories.messagebus.bus')
@@ -13,7 +14,8 @@ local handlers = {
     [keyboardhandler.Key] = keyboardhandler.handleMessage,
     [positionhandler.Key] = positionhandler.handleMessage,
     [loghandler.Key] = loghandler.handleMessage,
-    [statshandler.Key] = statshandler.handleMessage
+    [itemhandler.Key] = itemhandler.handleMessage,
+    [brawlhandler.Key] = brawlhandler.handleMessage
 }
 
 

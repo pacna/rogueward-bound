@@ -2,6 +2,8 @@
 local imgmodule = require("modules.img")
 
 local entity = {}
+
+--[[const]]
 entity.Types = {
     WALL = 1,
     FLOOR = 2,

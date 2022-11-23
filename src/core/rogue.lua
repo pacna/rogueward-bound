@@ -27,13 +27,35 @@ local function loadMap()
     end
 end
 
-local function addEntitiesToMap(maxNumberOfEntities, entity)
+local function createEntitiesByType(type)
+    if type == entitycore.Types.MINION then
+        return entitycore.createMinion()
+    end
+
+    if type == entitycore.Types.HEALTH then
+        return entitycore.createHealth()
+    end
+
+    if type == entitycore.Types.WEAPON then
+        return entitycore.createChest()
+    end
+
+    if type == entitycore.Types.BOSS then
+        return entitycore.createBoss()
+    end
+
+    if type == entitycore.Types.SCROLL then
+        return entitycore.createScroll()
+    end
+end
+
+local function addEntitiesToMap(maxNumberOfEntities, entityType)
     for _ = maxNumberOfEntities, 1, -1 do
         local row = math.random(1, rogue.ROW)
         for j = row, rogue.ROW do
             local column = math.random(1, rogue.COLUMN)
             if rogue.map[j][column].type == entitycore.Types.FLOOR then
-                rogue.map[j][column] = entity
+                rogue.map[j][column] = createEntitiesByType(entityType)
                 break;
             end
         end
@@ -42,13 +64,13 @@ local function addEntitiesToMap(maxNumberOfEntities, entity)
 end
 
 local function loadEntities()
-    addEntitiesToMap(5, entitycore.createMinion())
-    addEntitiesToMap(5, entitycore.createHealth())
-    addEntitiesToMap(5, entitycore.createChest())
+    addEntitiesToMap(5, entitycore.Types.MINION)
+    addEntitiesToMap(5, entitycore.Types.HEALTH)
+    addEntitiesToMap(5, entitycore.Types.WEAPON)
     -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
-    addEntitiesToMap(1, entitycore.createBoss())
+    addEntitiesToMap(1, entitycore.Types.BOSS)
     -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
-    addEntitiesToMap(1, entitycore.createScroll())
+    addEntitiesToMap(1, entitycore.Types.SCROLL)
 end
 
 local function loadPlayer()

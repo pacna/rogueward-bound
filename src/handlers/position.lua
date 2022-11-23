@@ -19,6 +19,11 @@ local function isItem(xPos, yPos)
         roguecore.map[xPos][yPos].type == entitycore.Types.SCROLL)
 end
 
+local function isEnemy(xPos, yPos)
+    return (roguecore.map[xPos][yPos].type == entitycore.Types.MINION or
+        roguecore.map[xPos][yPos].type == entitycore.Types.BOSS)
+end
+
 local function isValidXPos(xPos)
     return xPos ~= 0 and xPos <= roguecore.ROW
 end
@@ -46,11 +51,17 @@ function position.handleMessage(msg)
     if isItem(playerXPos, playerYPos) then
         local selectedEntity = roguecore.map[playerXPos][playerYPos]
         publisher.send(publisher.Types.LOG,
-            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk })
-        roguecore.map[playerXPos][playerYPos] = entitycore.createFloor()
+            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk,
+                xp = selectedEntity.xp })
 
-        publisher.send(publisher.Types.STATS,
-            { type = selectedEntity.type, health = selectedEntity.health, atk = selectedEntity.atk })
+        publisher.send(publisher.Types.ITEM,
+            { health = selectedEntity.health, atk = selectedEntity.atk, xPos = playerXPos, yPos = playerYPos })
+        return
+    end
+
+    if isEnemy(playerXPos, playerYPos) then
+        publisher.send(publisher.Types.BRAWL, { xPos = playerXPos, yPos = playerYPos })
+        return
     end
 
     if isFloor(playerXPos, playerYPos) then

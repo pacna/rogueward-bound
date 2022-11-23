@@ -5,11 +5,14 @@ local Message = require('entities.message')
 local messagebus = require('factories.messagebus.bus')
 
 local publisher = {}
+
+--[[const]]
 publisher.Types = {
     KEYBOARD = "keyboard",
     POSITION = "position",
     LOG = "log",
-    STATS = "stats"
+    ITEM = "item",
+    BRAWL = "brawl"
 }
 
 function publisher.send(key, value)
