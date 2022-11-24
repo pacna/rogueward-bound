@@ -9,8 +9,8 @@ local roguecore = require('core.rogue')
 -- components
 local playercomponent = require('components.player')
 
-local grid = {}
-grid.ID = "grid"
+local dungeon = {}
+dungeon.ID = "dungeon"
 
 local borderRGBA = colormodule.getColorRGBA(colormodule.Types.LIGHT_BLUE)
 local entityRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
@@ -23,7 +23,7 @@ local function determineEntityColor(entity)
     return colormodule.Types.BLUE
 end
 
-function grid.render()
+function dungeon.render()
     drawmodule.drawBorders {
         colorRGBA = borderRGBA,
         xPos = 1,
@@ -47,4 +47,4 @@ function grid.render()
     playercomponent.render()
 end
 
-return grid
+return dungeon

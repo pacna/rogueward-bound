@@ -1,11 +1,11 @@
 -- components
-local gridcomponent = require('components.grid')
+local dungeoncomponent = require('components.dungeon')
 local sidebarcomponent = require('components.sidebar')
 
 local renderer = {}
 
 local renders = {
-    [gridcomponent.ID] = gridcomponent.render,
+    [dungeoncomponent.ID] = dungeoncomponent.render,
     [sidebarcomponent.ID] = sidebarcomponent.render,
 }
 
