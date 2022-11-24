@@ -1,23 +1,25 @@
 local color = {}
 
 --[[const]]
-color.WHITE = 1
-color.BLACK = 2
-color.BLUE = 3
-color.LIGHT_BLUE = 4
-color.GRAY = 5
-color.RED = 6
+color.Types = {
+    WHITE = 1,
+    BLACK = 2,
+    BLUE = 3,
+    LIGHT_BLUE = 4,
+    GRAY = 5,
+    RED = 6
+}
 
 --[[const]]
 local COLOR_MAX = 255
 
 local colorSwitch = {
-    [color.WHITE] = { 255, 255, 255, 255 },
-    [color.BLACK] = { 0, 0, 0, 255 },
-    [color.BLUE] = { 52, 49, 76 },
-    [color.LIGHT_BLUE] = { 0, 223, 252 },
-    [color.GRAY] = { 35, 35, 35 },
-    [color.RED] = { 200, 0, 0, 255 }
+    [color.Types.WHITE] = { 255, 255, 255, 255 },
+    [color.Types.BLACK] = { 0, 0, 0, 255 },
+    [color.Types.BLUE] = { 52, 49, 76 },
+    [color.Types.LIGHT_BLUE] = { 0, 223, 252 },
+    [color.Types.GRAY] = { 35, 35, 35 },
+    [color.Types.RED] = { 200, 0, 0, 255 }
 }
 
 function color.getLoveRGBA(args)

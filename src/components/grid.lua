@@ -12,15 +12,15 @@ local playercomponent = require('components.player')
 local grid = {}
 grid.ID = "grid"
 
-local borderRGBA = colormodule.getColorRGBA(colormodule.LIGHT_BLUE)
-local entityRGBA = colormodule.getColorRGBA(colormodule.WHITE)
+local borderRGBA = colormodule.getColorRGBA(colormodule.Types.LIGHT_BLUE)
+local entityRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
 local function determineEntityColor(entity)
     if entity.type == entitycore.Types.WALL then
-        return colormodule.BLACK
+        return colormodule.Types.BLACK
     end
 
-    return colormodule.BLUE
+    return colormodule.Types.BLUE
 end
 
 function grid.render()

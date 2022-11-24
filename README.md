@@ -19,3 +19,5 @@ VSCode
 ```bash
 Alt+L
 ```
+
+**note** -- make sure to check the extension setting to see if the file path matches what is in your OS

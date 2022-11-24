@@ -8,7 +8,7 @@ local roguecore = require("core.rogue")
 local player = {}
 player.ID = "player"
 
-local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.WHITE)
+local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
 function player.render()
     drawmodule.drawImage {

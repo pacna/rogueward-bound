@@ -20,7 +20,6 @@ local handlers = {
     [brawlhandler.Key] = brawlhandler.handleMessage
 }
 
-
 function handler.run()
 
     if messagebus.isOff() then

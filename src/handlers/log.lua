@@ -8,6 +8,10 @@ local entitycore = require('core.entity')
 local log = {}
 log.Key = "log"
 
+local function isEnemy(type)
+    return (type == entitycore.Types.MINION or type == entitycore.Types.BOSS)
+end
+
 function log.handleMessage(msg)
     if msg.key ~= log.Key then
         return
@@ -17,27 +21,37 @@ function log.handleMessage(msg)
     if not next(msg.value) then
         if currentPlayer.health > 0 then
             logcomponent.updateLog("You won!")
-        else
-            logcomponent.updateLog("Game over")
+            return
         end
 
+        logcomponent.updateLog("Game over")
         return
     end
 
     local logContent = msg.value
 
+    if isEnemy(logContent.type) then
+        if logContent.xp ~= 0 then
+            logcomponent.updateLog(string.format("Enemy is dead. Player gain +%d xp", logContent.xp))
+            return
+        end
+
+        logcomponent.updateLog(string.format("Player took %d damage. \n\n Enemy has %d health left", logContent.atk,
+            logContent.health))
+        return
+    end
     if logContent.type == entitycore.Types.SCROLL then
-        logcomponent.updateLog("You found the secret scroll!")
+        logcomponent.updateLog("Player found the secret scroll!")
         return
     end
 
     if logContent.type == entitycore.Types.HEALTH then
-        logcomponent.updateLog(string.format("You gain +%d health", logContent.health))
+        logcomponent.updateLog(string.format("Player gain +%d health", logContent.health))
         return
     end
 
     if logContent.type == entitycore.Types.WEAPON then
-        logcomponent.updateLog(string.format("You gain +%d atk", logContent.atk))
+        logcomponent.updateLog(string.format("Player gain +%d atk", logContent.atk))
         return
     end
 end

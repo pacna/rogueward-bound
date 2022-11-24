@@ -15,7 +15,7 @@ local function battle(enemy, player, xPos, yPos)
         roguecore.map[xPos][yPos].health = enemyRemainingHealth
         -- Seems like the enemy can take a hit. Now it's the player's turn :(
         player:subtractHealth(enemy.atk)
-        publisher.send(publisher.Types.LOG, { type = enemy.type, health = enemyRemainingHealth, atk = 0, xp = 0 })
+        publisher.send(publisher.Types.LOG, { type = enemy.type, health = enemyRemainingHealth, atk = enemy.atk, xp = 0 })
     end
 
     if player.health <= 0 then
@@ -28,6 +28,7 @@ local function battle(enemy, player, xPos, yPos)
         roguecore.map[xPos][yPos] = entitycore.createFloor()
         player:setPos { x = xPos, y = yPos }
         player:addXP(enemy.xp)
+        publisher.send(publisher.Types.LOG, { type = enemy.type, health = 0, atk = 0, xp = enemy.xp })
 
         if enemy.type == entitycore.Types.BOSS then
             publisher.send(publisher.Types.LOG, {})

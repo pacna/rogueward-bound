@@ -13,8 +13,8 @@ local statscomponent = require('components.stats')
 local sidebar = {}
 sidebar.ID = "sidebar"
 
-local keyRGBA = colormodule.getColorRGBA(colormodule.WHITE)
-local borderRGBA = colormodule.getColorRGBA(colormodule.RED)
+local keyRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
+local borderRGBA = colormodule.getColorRGBA(colormodule.Types.RED)
 
 local function drawKeys()
     local imgXPosition = roguecore.ROW + 3

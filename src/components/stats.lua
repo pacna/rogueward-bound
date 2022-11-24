@@ -8,7 +8,7 @@ local roguecore = require("core.rogue")
 local stats = {}
 stats.ID = "stats"
 
-local statsRGBA = colormodule.getColorRGBA(colormodule.WHITE)
+local statsRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
 function stats.render()
     drawmodule.drawText {

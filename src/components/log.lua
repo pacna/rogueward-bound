@@ -7,7 +7,7 @@ log.ID = "log"
 
 local displayedText = "Have fun!"
 
-local logRGBA = colormodule.getColorRGBA(colormodule.WHITE)
+local logRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
 function log.updateLog(text)
     displayedText = text
