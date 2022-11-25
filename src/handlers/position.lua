@@ -24,18 +24,6 @@ local function isEnemy(xPos, yPos)
         roguecore.map[xPos][yPos].type == entitycore.Types.BOSS)
 end
 
-local function isValidXPos(xPos)
-    return xPos ~= 0 and xPos <= roguecore.ROW
-end
-
-local function isValidYPos(yPos)
-    return yPos ~= 0 and yPos <= roguecore.COLUMN
-end
-
-local function isWithinMap(dx, dy)
-    return isValidXPos(dx) and isValidYPos(dy)
-end
-
 function position.handleMessage(msg)
     if msg.key ~= position.Key then
         return
@@ -44,7 +32,7 @@ function position.handleMessage(msg)
     local playerXPos = roguecore.currentPlayer.xPos + msg.value.dx
     local playerYPos = roguecore.currentPlayer.yPos + msg.value.dy
 
-    if not isWithinMap(playerXPos, playerYPos) then
+    if not roguecore.isWithinMap(playerXPos, playerYPos) then
         return
     end
 

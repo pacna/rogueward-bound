@@ -89,6 +89,18 @@ local function loadPlayer()
     }
 end
 
+local function isValidXPos(xPos)
+    return xPos ~= 0 and xPos <= rogue.ROW
+end
+
+local function isValidYPos(yPos)
+    return yPos ~= 0 and yPos <= rogue.COLUMN
+end
+
+function rogue.isWithinMap(dx, dy)
+    return isValidXPos(dx) and isValidYPos(dy)
+end
+
 function rogue.loadWorld()
     loadMap()
     loadEntities()

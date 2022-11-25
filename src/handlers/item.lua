@@ -5,6 +5,9 @@ local entitycore = require('core.entity')
 -- factories
 local publisher = require('factories.messagebus.publisher')
 
+-- components
+local dungeoncomponent = require('components.dungeon')
+
 local item = {}
 item.Key = "item"
 
@@ -14,6 +17,10 @@ function item.handleMessage(msg)
     end
 
     local itemContent = msg.value
+
+    if itemContent.type == entitycore.Types.SCROLL then
+        dungeoncomponent.enableFullView()
+    end
 
     if itemContent.atk ~= 0 then
         roguecore.currentPlayer:addAtkPower(itemContent.atk)

@@ -12,6 +12,19 @@ local playercomponent = require('components.player')
 local dungeon = {}
 dungeon.ID = "dungeon"
 
+local shouldShowFullView = false
+local neighborsPos = {
+    SELF = { x = 0, y = 0 },
+    LEFT = { x = -1, y = 0 },
+    RIGHT = { x = 1, y = 0 },
+    TOP = { x = 0, y = -1 },
+    DOWN = { x = 0, y = 1 },
+    TOP_LEFT = { x = -1, y = -1 },
+    TOP_RIGHT = { x = 1, y = -1 },
+    DOWN_LEFT = { x = -1, y = 1 },
+    DOWN_RIGHT = { x = 1, y = 1 }
+}
+
 local borderRGBA = colormodule.getColorRGBA(colormodule.Types.LIGHT_BLUE)
 local entityRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
@@ -23,6 +36,40 @@ local function determineEntityColor(entity)
     return colormodule.Types.BLUE
 end
 
+function dungeon.enableFullView()
+    shouldShowFullView = true
+end
+
+local function drawNarrowView(map)
+    for _, pos in pairs(neighborsPos) do
+        local xPos = roguecore.currentPlayer.xPos + pos.x
+        local yPos = roguecore.currentPlayer.yPos + pos.y
+        if roguecore.isWithinMap(xPos, yPos) then
+            drawmodule.drawTile(colormodule.getColorRGBA(determineEntityColor(map[xPos][yPos])), xPos, yPos)
+            drawmodule.drawImage {
+                colorRGBA = entityRGBA,
+                imgPath = map[xPos][yPos].imgSrc,
+                xPos = xPos,
+                yPos = yPos
+            }
+        end
+    end
+end
+
+local function drawFullView(map)
+    for x = 1, #map do
+        for y = 1, #map[x] do
+            drawmodule.drawTile(colormodule.getColorRGBA(determineEntityColor(map[x][y])), x, y)
+            drawmodule.drawImage {
+                colorRGBA = entityRGBA,
+                imgPath = map[x][y].imgSrc,
+                xPos = x,
+                yPos = y
+            }
+        end
+    end
+end
+
 function dungeon.render()
     drawmodule.drawBorders {
         colorRGBA = borderRGBA,
@@ -32,16 +79,10 @@ function dungeon.render()
         height = drawmodule.getTileSize() * roguecore.COLUMN
     }
 
-    for x = 1, #roguecore.map do
-        for y = 1, #roguecore.map[x] do
-            drawmodule.drawTile(colormodule.getColorRGBA(determineEntityColor(roguecore.map[x][y])), x, y)
-            drawmodule.drawImage {
-                colorRGBA = entityRGBA,
-                imgPath = roguecore.map[x][y].imgSrc,
-                xPos = x,
-                yPos = y
-            }
-        end
+    if shouldShowFullView then
+        drawFullView(roguecore.map)
+    else
+        drawNarrowView(roguecore.map)
     end
 
     playercomponent.render()
