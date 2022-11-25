@@ -17,8 +17,8 @@ local keyRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 local borderRGBA = colormodule.getColorRGBA(colormodule.Types.RED)
 
 local function drawKeys()
-    local imgXPosition = roguecore.ROW + 3
-    local textXPosition = roguecore.ROW + 4.5
+    local imgXPosition = roguecore.getRow() + 3
+    local textXPosition = roguecore.getRow() + 4.5
 
     local imgYInitPosition = 3
     local textYInitPosition = 3.25
@@ -57,7 +57,7 @@ function sidebar.render()
         xPos = 32,
         yPos = 1,
         width = 360 + drawmodule.getTileSize(),
-        height = drawmodule.getTileSize() * roguecore.COLUMN
+        height = drawmodule.getTileSize() * roguecore.getColumn()
     }
 
     drawKeys()

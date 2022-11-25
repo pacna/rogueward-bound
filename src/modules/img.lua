@@ -3,36 +3,36 @@ local img = {}
 local basePath = "assets/"
 
 img.imgSwitch = {
-    ["Boss"] = { basePath .. "boss.png" },
-    ["Chest"] = { basePath .. "chest.png" },
-    ["Minion"] = { basePath .. "minion.png" },
-    ["Health"] = { basePath .. "heart.png" },
-    ["Player"] = { basePath .. "pokeball.png" },
-    ["Scroll"] = { basePath .. "scroll.png" }
+    BOSS = { basePath .. "boss.png" },
+    CHEST = { basePath .. "chest.png" },
+    MINION = { basePath .. "minion.png" },
+    HEALTH = { basePath .. "heart.png" },
+    PLAYER = { basePath .. "pokeball.png" },
+    SCROLL = { basePath .. "scroll.png" }
 }
 
 function img.getBoss()
-    return img.imgSwitch["Boss"]
+    return img.imgSwitch.BOSS
 end
 
 function img.getChest()
-    return img.imgSwitch["Chest"]
+    return img.imgSwitch.CHEST
 end
 
 function img.getMinion()
-    return img.imgSwitch["Minion"]
+    return img.imgSwitch.MINION
 end
 
 function img.getHealth()
-    return img.imgSwitch["Health"]
+    return img.imgSwitch.HEALTH
 end
 
 function img.getPlayer()
-    return img.imgSwitch["Player"]
+    return img.imgSwitch.PLAYER
 end
 
 function img.getScroll()
-    return img.imgSwitch["Scroll"]
+    return img.imgSwitch.SCROLL
 end
 
 return img

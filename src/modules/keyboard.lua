@@ -1,26 +1,26 @@
 local keyboard = {}
 
 local keySwitch = {
-    ["up"] = { "up", "w" },
-    ["down"] = { "down", "s" },
-    ["left"] = { "left", "a" },
-    ["right"] = { "right", "d" }
+    UP = { "up", "w" },
+    DOWN = { "down", "s" },
+    LEFT = { "left", "a" },
+    RIGHT = { "right", "d" }
 }
 
 function keyboard.isUpPressed(key)
-    return keySwitch["up"][1] == key or keySwitch["up"][2] == key
+    return keySwitch.UP[1] == key or keySwitch.UP[2] == key
 end
 
 function keyboard.isDownPressed(key)
-    return keySwitch["down"][1] == key or keySwitch["down"][2] == key
+    return keySwitch.DOWN[1] == key or keySwitch.DOWN[2] == key
 end
 
 function keyboard.isLeftPressed(key)
-    return keySwitch["left"][1] == key or keySwitch["left"][2] == key
+    return keySwitch.LEFT[1] == key or keySwitch.LEFT[2] == key
 end
 
 function keyboard.isRightPressed(key)
-    return keySwitch["right"][1] == key or keySwitch["right"][2] == key
+    return keySwitch.RIGHT[1] == key or keySwitch.RIGHT[2] == key
 end
 
 function keyboard.isQuit(key)

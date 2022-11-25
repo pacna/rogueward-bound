@@ -75,8 +75,8 @@ function dungeon.render()
         colorRGBA = borderRGBA,
         xPos = 1,
         yPos = 1,
-        width = drawmodule.getTileSize() * roguecore.ROW,
-        height = drawmodule.getTileSize() * roguecore.COLUMN
+        width = drawmodule.getTileSize() * roguecore.getRow(),
+        height = drawmodule.getTileSize() * roguecore.getColumn()
     }
 
     if shouldShowFullView then
