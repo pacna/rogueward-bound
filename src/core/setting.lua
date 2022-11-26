@@ -9,7 +9,6 @@ local default = {
     TITLE = "Love Rogue",
 }
 
-
 local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.Types.GRAY)
 
 function setting.load()

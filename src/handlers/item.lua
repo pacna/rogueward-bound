@@ -30,7 +30,7 @@ function item.handleMessage(msg)
         roguecore.currentPlayer:addHealth(itemContent.health)
     end
 
-    roguecore.map[itemContent.xPos][itemContent.yPos] = entitycore.createFloor()
+    roguecore.map[itemContent.xPos][itemContent.yPos] = entitycore.create(entitycore.Types.FLOOR)
     roguecore.currentPlayer:setPos { x = itemContent.xPos, y = itemContent.yPos }
 
     publisher.send(publisher.Types.LOG,

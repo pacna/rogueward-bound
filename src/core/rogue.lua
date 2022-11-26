@@ -4,6 +4,9 @@ local entitycore = require("core.entity")
 -- entities
 local Player = require("entities.player")
 
+-- modules
+local randommodule = require('modules.random')
+
 local rogue = {}
 rogue.currentPlayer = {}
 rogue.map = {}
@@ -13,52 +16,30 @@ local ROW = 30
 --[[const]]
 local COLUMN = 25
 
+local takenXPositions = {}
+local takenYPositions = {}
+
 local function loadMap()
     for i = 1, ROW do
         rogue.map[i] = {}
         for j = 1, COLUMN do
             local seed = math.random(1, 5)
             if seed == entitycore.Types.WALL then
-                rogue.map[i][j] = entitycore.createWall()
+                rogue.map[i][j] = entitycore.create(entitycore.Types.WALL)
             else
-                rogue.map[i][j] = entitycore.createFloor()
+                rogue.map[i][j] = entitycore.create(entitycore.Types.FLOOR)
             end
         end
-    end
-end
-
-local function createEntitiesByType(type)
-    if type == entitycore.Types.MINION then
-        return entitycore.createMinion()
-    end
-
-    if type == entitycore.Types.HEALTH then
-        return entitycore.createHealth()
-    end
-
-    if type == entitycore.Types.WEAPON then
-        return entitycore.createChest()
-    end
-
-    if type == entitycore.Types.BOSS then
-        return entitycore.createBoss()
-    end
-
-    if type == entitycore.Types.SCROLL then
-        return entitycore.createScroll()
     end
 end
 
 local function addEntitiesToMap(maxNumberOfEntities, entityType)
-    for _ = maxNumberOfEntities, 1, -1 do
-        local row = math.random(1, ROW)
-        for j = row, ROW do
-            local column = math.random(1, COLUMN)
-            if rogue.map[j][column].type == entitycore.Types.FLOOR then
-                rogue.map[j][column] = createEntitiesByType(entityType)
-                break;
-            end
-        end
+    for _ = 1, maxNumberOfEntities do
+        local availableXPos = randommodule.generate(1, ROW, takenXPositions)
+        local availableYPos = randommodule.generate(1, COLUMN, takenYPositions)
+        rogue.map[availableXPos][availableYPos] = entitycore.create(entityType)
+        table.insert(takenXPositions, availableXPos)
+        table.insert(takenYPositions, availableYPos)
     end
 
 end
@@ -67,21 +48,19 @@ local function loadEntities()
     addEntitiesToMap(5, entitycore.Types.MINION)
     addEntitiesToMap(5, entitycore.Types.HEALTH)
     addEntitiesToMap(5, entitycore.Types.WEAPON)
-    -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
     addEntitiesToMap(1, entitycore.Types.BOSS)
-    -- TODO: handle edge case where entity can not be loaded b/c the row/col are filled
     addEntitiesToMap(1, entitycore.Types.SCROLL)
 end
 
 local function loadPlayer()
-    local xPos = math.random(1, ROW)
-    local yPos = math.random(1, COLUMN)
-    -- TODO: handle edge case where player position might remove an existing entity on the map (specifically the boss)
-    rogue.map[xPos][yPos] = entitycore.createFloor()
-    local player = entitycore.createPlayer()
+    local availableXPos = randommodule.generate(1, ROW, takenXPositions)
+    local availableYPos = randommodule.generate(1, COLUMN, takenYPositions)
+    rogue.map[availableXPos][availableYPos] = entitycore.create(entitycore.Types.FLOOR)
+
+    local player = entitycore.create(entitycore.Types.PLAYER)
     rogue.currentPlayer = Player:new {
-        xPos = xPos,
-        yPos = yPos,
+        xPos = availableXPos,
+        yPos = availableYPos,
         health = player.health,
         xp = player.xp,
         atk = player.atk,

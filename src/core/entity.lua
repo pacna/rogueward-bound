@@ -15,36 +15,70 @@ entity.Types = {
     SCROLL = 8
 }
 
-function entity.createWall()
+local function createWall()
     return { type = entity.Types.WALL, health = 0, xp = 0, atk = 0, imgSrc = "" }
 end
 
-function entity.createFloor()
+local function createFloor()
     return { type = entity.Types.FLOOR, health = 0, xp = 0, atk = 0, imgSrc = "" }
 end
 
-function entity.createMinion()
+local function createMinion()
     return { type = entity.Types.MINION, health = 10, xp = 1, atk = 1, imgSrc = imgmodule.getMinion() }
 end
 
-function entity.createBoss()
+local function createBoss()
     return { type = entity.Types.BOSS, health = 50, xp = 100, atk = 5, imgSrc = imgmodule.getBoss() }
 end
 
-function entity.createHealth()
+local function createHealth()
     return { type = entity.Types.HEALTH, health = 10, xp = 0, atk = 0, imgSrc = imgmodule.getHealth() }
 end
 
-function entity.createChest()
+local function createChest()
     return { type = entity.Types.WEAPON, health = 0, xp = 0, atk = 10, imgSrc = imgmodule.getChest() }
 end
 
-function entity.createPlayer()
+local function createPlayer()
     return { type = entity.Types.PLAYER, health = 30, xp = 0, atk = 5, imgSrc = imgmodule.getPlayer() }
 end
 
-function entity.createScroll()
+local function createScroll()
     return { type = entity.Types.SCROLL, health = 0, xp = 5, atk = 0, imgSrc = imgmodule.getScroll() }
+end
+
+function entity.create(type)
+    if type == entity.Types.WALL then
+        return createWall()
+    end
+
+    if type == entity.Types.FLOOR then
+        return createFloor()
+    end
+
+    if type == entity.Types.MINION then
+        return createMinion()
+    end
+
+    if type == entity.Types.BOSS then
+        return createBoss()
+    end
+
+    if type == entity.Types.HEALTH then
+        return createHealth()
+    end
+
+    if type == entity.Types.WEAPON then
+        return createChest()
+    end
+
+    if type == entity.Types.PLAYER then
+        return createPlayer()
+    end
+
+    if type == entity.Types.SCROLL then
+        return createScroll()
+    end
 end
 
 return entity
