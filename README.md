@@ -1,6 +1,6 @@
 # Love Rogue
 
-A roguelike dungeon crawler game written in Lua using [Love2d](https://love2d.org/).
+A roguelike dungeon crawler game written in Lua and powered by [Love2d](https://love2d.org/) game engine.
 
 ### **Full View**
 
@@ -30,9 +30,9 @@ That is all. Have fun!
 
 ## Ubuntu Prerequisites
 
-- [Love2d](https://launchpad.net/~bartbes/+archive/ubuntu/love-stable)
-- [Lua](https://www.lua.org/download.html)
-- [Love2d Support](https://marketplace.visualstudio.com/items?itemName=pixelbyte-studios.pixelbyte-love2d) (optional)
+-   [Love2d](https://launchpad.net/~bartbes/+archive/ubuntu/love-stable)
+-   [Lua](https://www.lua.org/download.html)
+-   [Love2d Support](https://marketplace.visualstudio.com/items?itemName=pixelbyte-studios.pixelbyte-love2d) (optional)
 
 ## How to run
 
