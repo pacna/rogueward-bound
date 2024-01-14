@@ -7,7 +7,7 @@ img.imgSwitch = {
     CHEST = { basePath .. "chest.png" },
     MINION = { basePath .. "minion.png" },
     HEALTH = { basePath .. "heart.png" },
-    PLAYER = { basePath .. "pokeball.png" },
+    PLAYER = { basePath .. "player.png" },
     SCROLL = { basePath .. "scroll.png" }
 }
 

@@ -4,8 +4,8 @@ local colormodule = require("modules.color")
 local setting = {}
 
 local default = {
-    WIDTH = 2000,
-    HEIGHT = 1300,
+    WIDTH = 1800,
+    HEIGHT = 1100,
     TITLE = "Love Rogue",
 }
 
