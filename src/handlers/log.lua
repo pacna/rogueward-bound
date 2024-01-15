@@ -36,7 +36,7 @@ function log.handleMessage(msg)
             return
         end
 
-        logcomponent.updateLog(string.format("Player took %d damage. \n\n Enemy has %d health left", logContent.atk,
+        logcomponent.updateLog(string.format("Player took %d damage. \n\nEnemy has %d health left", logContent.atk,
             logContent.health))
         return
     end
