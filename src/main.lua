@@ -6,7 +6,7 @@ function love.load()
 end
 
 function love.update(dt)
-    gamecore.update()
+    gamecore.update(dt)
 end
 
 function love.keypressed(key)

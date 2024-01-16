@@ -5,15 +5,17 @@ local colormodule = require('modules.color')
 -- core
 local roguecore = require("core.rogue")
 
-local player = {}
-player.ID = "player"
-
-local backgroundColorRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
+local player = {
+    ID = "player"
+}
 
 function player.render()
-    drawmodule.drawImage {
-        colorRGBA = backgroundColorRGBA,
-        imgPath = roguecore.currentPlayer.imgSrc,
+    local frameIndex = math.floor(roguecore.currentPlayer.currentTime / roguecore.currentPlayer.duration * #roguecore.currentPlayer.frames) + 1
+
+    drawmodule.drawAnimation{
+        colorRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE),
+        spriteSheet = roguecore.currentPlayer.idleSheet,
+        frames = roguecore.currentPlayer.frames[frameIndex],
         xPos = roguecore.currentPlayer.xPos,
         yPos = roguecore.currentPlayer.yPos
     }

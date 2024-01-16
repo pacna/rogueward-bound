@@ -10,11 +10,11 @@ local roguecore = require("core.rogue")
 local logcomponent = require('components.log')
 local statscomponent = require('components.stats')
 
-local sidebar = {}
-sidebar.ID = "sidebar"
+local sidebar = {
+    ID = "sidebar"
+}
 
 local keyRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
-local borderRGBA = colormodule.getColorRGBA(colormodule.Types.RED)
 
 local function drawKeys()
     local imgXPosition = roguecore.getRow() + 4
@@ -31,7 +31,7 @@ local function drawKeys()
         yPos = 1.5
     }
 
-    for header, src in pairs(imgmodule.imgSwitch) do
+    for header, src in pairs(imgmodule.getKeys()) do
         drawmodule.drawImage {
             colorRGBA = keyRGBA,
             imgPath = src,
@@ -53,7 +53,7 @@ end
 
 function sidebar.render()
     drawmodule.drawBorders {
-        colorRGBA = borderRGBA,
+        colorRGBA = colormodule.getColorRGBA(colormodule.Types.RED),
         xPos = 42,
         yPos = 1,
         width = 360 + drawmodule.getTileSize(),

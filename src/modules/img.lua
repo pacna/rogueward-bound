@@ -2,37 +2,42 @@ local img = {}
 
 local basePath = "assets/"
 
-img.imgSwitch = {
-    BOSS = { basePath .. "boss.png" },
-    CHEST = { basePath .. "chest.png" },
-    MINION = { basePath .. "minion.png" },
-    HEALTH = { basePath .. "heart.png" },
-    PLAYER = { basePath .. "player.png" },
-    SCROLL = { basePath .. "scroll.png" }
-}
-
+function img.getKeys()
+    return {
+        BOSS = img.getBoss(),
+        CHEST = img.getChest(),
+        MINION = img.getMinion(),
+        HEALTH = img.getHealth(),
+        PLAYER = img.getPlayer(),
+        SCROLL = img.getScroll()
+    }
+end
 function img.getBoss()
-    return img.imgSwitch.BOSS
+    return basePath .. "boss.png"
 end
 
 function img.getChest()
-    return img.imgSwitch.CHEST
+    return basePath .. "chest.png"
 end
 
 function img.getMinion()
-    return img.imgSwitch.MINION
+    return basePath .. "minion.png"
 end
 
 function img.getHealth()
-    return img.imgSwitch.HEALTH
+    return basePath .. "heart.png"
 end
 
 function img.getPlayer()
-    return img.imgSwitch.PLAYER
+    return basePath .. "player.png"
+end
+
+function img.getPlayerIdle()
+    return basePath .. "player_idle.png"
 end
 
 function img.getScroll()
-    return img.imgSwitch.SCROLL
+    return basePath .. "scroll.png"
 end
 
 return img

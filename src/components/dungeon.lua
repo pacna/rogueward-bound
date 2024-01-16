@@ -9,8 +9,9 @@ local roguecore = require('core.rogue')
 -- components
 local playercomponent = require('components.player')
 
-local dungeon = {}
-dungeon.ID = "dungeon"
+local dungeon = {
+    ID = "dungeon"
+}
 
 local shouldShowFullView = false
 local neighborsPos = {
@@ -25,7 +26,6 @@ local neighborsPos = {
     DOWN_RIGHT = { x = 1, y = 1 }
 }
 
-local borderRGBA = colormodule.getColorRGBA(colormodule.Types.LIGHT_BLUE)
 local entityRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 
 local function determineEntityColor(entity)
@@ -72,7 +72,7 @@ end
 
 function dungeon.render()
     drawmodule.drawBorders {
-        colorRGBA = borderRGBA,
+        colorRGBA = colormodule.getColorRGBA(colormodule.Types.LIGHT_BLUE),
         xPos = 1,
         yPos = 1,
         width = drawmodule.getTileSize() * roguecore.getRow(),

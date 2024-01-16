@@ -64,7 +64,8 @@ local function loadPlayer()
         health = player.health,
         xp = player.xp,
         atk = player.atk,
-        imgSrc = player.imgSrc
+        imgSrc = player.imgSrc,
+        idleSheet = player.idleSheet
     }
 end
 

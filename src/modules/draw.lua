@@ -20,6 +20,11 @@ function draw.getTileSize()
     return TILE_SIZE
 end
 
+function draw.drawAnimation(configs)
+    love.graphics.setColor(configs.colorRGBA.red, configs.colorRGBA.green, configs.colorRGBA.blue)
+    love.graphics.draw(configs.spriteSheet, configs.frames, nextXPos(configs.xPos), nextYPos(configs.yPos))
+end
+
 function draw.drawText(configs)
     local font = love.graphics.newFont(configs.fontSize)
     love.graphics.setFont(font)

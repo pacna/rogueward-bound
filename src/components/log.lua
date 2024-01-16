@@ -2,8 +2,9 @@
 local drawmodule = require('modules.draw')
 local colormodule = require('modules.color')
 
-local log = {}
-log.ID = "log"
+local log = {
+    ID = "log"
+}
 
 local displayedText = "Have fun!"
 

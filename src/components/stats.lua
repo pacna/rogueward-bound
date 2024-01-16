@@ -5,8 +5,9 @@ local colormodule = require('modules.color')
 -- core
 local roguecore = require("core.rogue")
 
-local stats = {}
-stats.ID = "stats"
+local stats = {
+    ID = "stats"
+}
 
 local statsRGBA = colormodule.getColorRGBA(colormodule.Types.WHITE)
 

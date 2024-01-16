@@ -16,6 +16,7 @@ end
 
 function game.update(dt)
     handlerfactory.run()
+    roguecore.currentPlayer:update(dt)
 end
 
 function game.draw()
