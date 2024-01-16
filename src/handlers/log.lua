@@ -5,8 +5,9 @@ local logcomponent = require('components.log')
 local roguecore = require('core.rogue')
 local entitycore = require('core.entity')
 
-local log = {}
-log.Key = "log"
+local log = {
+    Key = "log"
+}
 
 local function isEnemy(type)
     return (type == entitycore.Types.MINION or type == entitycore.Types.BOSS)

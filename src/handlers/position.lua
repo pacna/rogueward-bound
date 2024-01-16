@@ -5,8 +5,9 @@ local roguecore = require('core.rogue')
 -- factories
 local publisher = require('factories.messagebus.publisher')
 
-local position = {}
-position.Key = "position"
+local position = {
+    Key = "position"
+}
 
 local function isFloor(xPos, yPos)
     return roguecore.map[xPos][yPos].type == entitycore.Types.FLOOR

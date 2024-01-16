@@ -8,8 +8,9 @@ local publisher = require('factories.messagebus.publisher')
 -- components
 local dungeoncomponent = require('components.dungeon')
 
-local item = {}
-item.Key = "item"
+local item = {
+    Key = "item"
+}
 
 function item.handleMessage(msg)
     if msg.key ~= item.Key then

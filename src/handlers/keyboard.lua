@@ -4,8 +4,9 @@ local keyboardmodule = require("modules.keyboard")
 -- factories
 local publisher = require('factories.messagebus.publisher')
 
-local keyboard = {}
-keyboard.Key = "keyboard"
+local keyboard = {
+    Key = "keyboard"
+}
 
 local function sendMessage(dx, dy)
     publisher.send(publisher.Types.POSITION, { dx = dx, dy = dy })

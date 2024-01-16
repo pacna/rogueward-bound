@@ -5,8 +5,9 @@ local roguecore = require('core.rogue')
 -- factories
 local publisher = require('factories.messagebus.publisher')
 
-local brawl = {}
-brawl.Key = "brawl"
+local brawl = {
+    Key = "brawl"
+}
 
 local function battle(participants, xPos, yPos)
     local enemyRemainingHealth = participants.enemy.health - participants.player.atk
