@@ -10,6 +10,8 @@ Dive into the depths of an engaging roguelike dungeon crawler, crafted with Lua 
 
 ![Narrow View](./docs/narrow-view.png)
 
+Give it a try by clicking [here](https://pacna.github.io/rogueward-bound/).
+
 ## Instructions/Rules
 
 1. `BOSS` -- the MF that you have to beat to win the game ;)
