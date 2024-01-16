@@ -18,15 +18,15 @@ function log.render()
         colorRGBA = logRGBA,
         text = "Game log",
         fontSize = 28,
-        xPos = 33,
-        yPos = 18
+        xPos = 44,
+        yPos = 21
     }
     drawmodule.drawText {
         colorRGBA = logRGBA,
         text = displayedText,
-        fontSize = 20,
-        xPos = 33,
-        yPos = 19.5
+        fontSize = 18,
+        xPos = 44,
+        yPos = 22.5
     }
 end
 

@@ -1,29 +1,29 @@
 -- core
 local roguecore = require("core.rogue")
-local settingcore = require('core.setting')
+local layoutcore = require('core.layout')
 
 -- factories
 local rendererfactory = require('factories.renderer')
 local handlerfactory = require('factories.messagebus.handler')
 local publisher = require('factories.messagebus.publisher')
 
-local gamewrapper = {}
+local game = {}
 
-function gamewrapper.init()
-    settingcore.load()
+function game.init()
+    layoutcore.load()
     roguecore.loadWorld()
 end
 
-function gamewrapper.update()
+function game.update(dt)
     handlerfactory.run()
 end
 
-function gamewrapper.draw()
+function game.draw()
     rendererfactory.renders()
 end
 
-function gamewrapper.move(key)
+function game.move(key)
     publisher.send(publisher.Types.KEYBOARD, { keycode = key })
 end
 
-return gamewrapper
+return game

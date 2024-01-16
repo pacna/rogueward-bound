@@ -15,30 +15,25 @@ function stats.render()
         colorRGBA = statsRGBA,
         text = "Player Stats",
         fontSize = 28,
-        xPos = 33,
-        yPos = 13
+        xPos = 44,
+        yPos = 15
     }
-    drawmodule.drawText {
-        colorRGBA = statsRGBA,
-        text = "HP: " .. roguecore.currentPlayer.health,
-        fontSize = 20,
-        xPos = 33,
-        yPos = 14.5
+
+    local playerStats = {
+        {label = "HP", value = roguecore.currentPlayer.health},
+        {label = "XP", value = roguecore.currentPlayer.xp},
+        {label = "Atk", value = roguecore.currentPlayer.atk}
     }
-    drawmodule.drawText {
-        colorRGBA = statsRGBA,
-        text = "XP: " .. roguecore.currentPlayer.xp,
-        fontSize = 20,
-        xPos = 33,
-        yPos = 15.5
-    }
-    drawmodule.drawText {
-        colorRGBA = statsRGBA,
-        text = "Atk: " .. roguecore.currentPlayer.atk,
-        fontSize = 20,
-        xPos = 33,
-        yPos = 16.5
-    }
+
+    for i, stat in ipairs(playerStats) do
+        drawmodule.drawText {
+            colorRGBA = statsRGBA,
+            text = stat.label .. ": " .. stat.value,
+            fontSize = 18,
+            xPos = 44,
+            yPos = 16 + i
+        }
+    end
 end
 
 return stats

@@ -1,18 +1,18 @@
 -- core
-local gamewrappercore = require("core.gamewrapper")
+local gamecore = require("core.game")
 
 function love.load()
-    gamewrappercore.init()
+    gamecore.init()
 end
 
 function love.update(dt)
-    gamewrappercore.update()
+    gamecore.update()
 end
 
 function love.keypressed(key)
-    gamewrappercore.move(key)
+    gamecore.move(key)
 end
 
 function love.draw()
-    gamewrappercore.draw()
+    gamecore.draw()
 end

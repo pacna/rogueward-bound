@@ -12,9 +12,9 @@ rogue.currentPlayer = {}
 rogue.map = {}
 
 --[[const]]
-local ROW = 30
+local ROW = 40
 --[[const]]
-local COLUMN = 25
+local COLUMN = 30
 
 local takenXPositions = {}
 local takenYPositions = {}

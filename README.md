@@ -1,14 +1,14 @@
-# Love Rogue
+# Rogueward Bound
 
-A roguelike dungeon crawler game written in Lua and powered by [Love2d](https://love2d.org/) game engine.
+Dive into the depths of an engaging roguelike dungeon crawler, crafted with Lua and fueled by the dynamic [Love2d](https://love2d.org/) game engine. Journey through intricate mazes, face challenging foes, and embark on an adventurous experience where every step and decision shape your fate.
 
-### **Full View**
+### Full View
 
-![Full View](./docs/rogue-full-view.png)
+![Full View](./docs/full-view.png)
 
-### **Narrow View**
+### Narrow View
 
-![Narrow View](./docs/rogue-narrow-view.png)
+![Narrow View](./docs/narrow-view.png)
 
 ## Instructions/Rules
 
@@ -19,34 +19,31 @@ A roguelike dungeon crawler game written in Lua and powered by [Love2d](https://
 5. `CHEST` -- to earn atk points
 6. `SCROLL` -- to see the dungeon in full view
 
-**note** -- you need a big screen to play this game
-
-That is all. Have fun!
+**Note:** You need a big screen to play this game.
 
 ## Shortcuts and bindings
 
-<kbd>Q</kbd> -- Exit the game\
-`Arrow Keys` or `WASD` -- to move player
+-   <kbd>Q</kbd> -- Exit the game
+-   `Arrow Keys` or `WASD` -- to move player
 
 ## Ubuntu Prerequisites
 
--   [Love2d](https://launchpad.net/~bartbes/+archive/ubuntu/love-stable)
--   [Lua](https://www.lua.org/download.html)
--   [Love2d Support](https://marketplace.visualstudio.com/items?itemName=pixelbyte-studios.pixelbyte-love2d) (optional)
+1.  [Love2d](https://launchpad.net/~bartbes/+archive/ubuntu/love-stable)
+2.  [Lua](https://www.lua.org/download.html)
+3.  [Make](https://www.gnu.org/software/make/)
+4.  [Love2d Support](https://marketplace.visualstudio.com/items?itemName=pixelbyte-studios.pixelbyte-love2d) (optional)
 
-## How to run
+## Playing the Game
 
-Terminal
-
-```bash
-$ love src .
-```
-
-VSCode (Optional -- you need the [Love2d Support](#ubuntu-prerequisites) extension to use this feature )
+To start and play the game, use the following command in your terminal:
 
 ```bash
-# open main.lua first
-Alt+L
+$ make run
 ```
 
-**note** -- make sure to check the extension setting to see if the file path matches what is in your OS
+## VSCode (Optional)
+
+1. Open `main.lua` first.
+2. Press `Alt + L`
+
+**Note:** Ensure that the file path in the extension settings matches your OS.

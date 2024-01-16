@@ -1,7 +1,7 @@
 local draw = {}
 
 -- [[const]]
-local TILE_SIZE = 48
+local TILE_SIZE = 32
 -- [[const]]
 local GRID_X_PADDING = 0
 -- [[const]]
